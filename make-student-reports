@@ -25,4 +25,9 @@ function makeStudentList(data) {
   return results;
 }
 
+//same outcome using map()
+function makeStudentList(data) {
+  return data.map(d => `${d.name}: ${d.grade}`);
+}
+
 makeStudentList(myArrayOfObjects);
