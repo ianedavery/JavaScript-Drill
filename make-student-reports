@@ -1,1 +1,28 @@
-function (data) {
+const myArrayOfObjects = [
+  {
+    name: 'Ian',
+    grade: 'A+'
+  },
+  {
+    name: 'Megan',
+    grade: 'A+'
+  },
+  {
+    name: 'Emile',
+    grade: 'A+'
+  },
+  {
+    name: 'Wyn',
+    grade: 'A+'
+  }
+];
+
+function makeStudentList(data) {
+  const results = [];
+  for (let i=0; i<data.length; i++) {
+    results.push(`${data[i].name}: ${data[i].grade}`);
+  }
+  return results;
+}
+
+makeStudentList(myArrayOfObjects);
