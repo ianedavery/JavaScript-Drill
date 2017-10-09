@@ -1,0 +1,39 @@
+// running the function with `objectA` and `expectedKeys`
+// should return `true`
+const objectA = {
+  id: 2,
+  name: 'Jane Doe',
+  age: 34,
+  city: 'Chicago'
+}
+
+// running the function with `objectB` and `expectedKeys`
+// should return `false`
+const objectB = {
+  id: 3,
+  age: 33,
+  city: 'Peoria'
+}
+
+const expectedKeys = [
+  'id', 'name', 'age', 'city'
+];
+
+function validateKeys(object, expectedKeys) {
+  //this conditional statement turns the keys of 'object' into an array and checks if the length of the array is not equal to  the length of the expectedKeys array. If the lengths are not the same, 'false' is returned.
+  if (Object.keys(object).length !== expectedKeys.length) {
+    return false;
+  }
+  //This loop runs through the expectedKeys array, incrementing throug the array index numbers until the initalizer is no longer lesser than the length of the expectedKeys array.
+  for (let i=0; i<expectedKeys.length; i++) {
+    //This conditional statement turns the keys of 'object' into an array and uses the find() method to find the first key that does not equal the expectedKeys key the loop is currently on. If a value is found that does not macth the current expectedKeys value, 'false' is returned.
+    if (!Object.keys(object).find(key => key == expectedKeys[i]))
+    {
+     return false; 
+    }
+  }
+  //if none of the above check turn up false, 'true' is returned by default.
+  return true;
+}
+
+validateKeys(objectA, expectedKeys);
