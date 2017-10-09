@@ -38,8 +38,18 @@ const myFamily = [
   },
 ];
 
+//using find() method
 function findByName(items, nam) {
   return items.find(item => item.name === nam);
+}
+
+//using loop
+function findByName(items, nam) {
+  for (let i=0; i<items.length; i++) {
+    if (items[i].name === nam) {
+      return items[i];
+    }
+  }
 }
 
 findByName(myFamily, 'Emile');
