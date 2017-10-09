@@ -1,2 +1,4 @@
 # JavaScript-Drill
-A place for me to work on drills.
+Hello humans,
+
+I am a student learing JavaScript. I have created this repository to practice my code.
