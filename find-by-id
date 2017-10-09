@@ -15,3 +15,31 @@ function findById(items, idNum) {
 }
 
 findById(data, 2);
+
+
+
+//Find by name example that I came up with
+
+const myFamily = [
+  {
+    name: 'Ian',
+    age: 38,
+    gender: 'male'
+  },
+  {
+    name: 'Megan',
+    age: 30,
+    gender: 'female'
+  },
+  {
+    name: 'Emile',
+    age: 2,
+    gender: 'male'
+  },
+];
+
+function findByName(items, nam) {
+  return items.find(item => item.name === nam);
+}
+
+findByName(myFamily, 'Emile');
