@@ -1,0 +1,17 @@
+const data = [{id: 1, foo: 'bar'}, {id: 2, foo: 'bizz'}];
+
+//using find()
+/*function findById(items, idNum) {
+  return items.find(item => item.id === idNum);
+}*/
+
+//using loop
+function findById(items, idNum) {
+  for (let i=0; i<items.length; i++) {
+    if (items[i].id === idNum) {
+      return items[i];
+    }
+  }
+}
+
+findById(data, 2);
