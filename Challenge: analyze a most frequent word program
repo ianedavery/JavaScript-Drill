@@ -1,0 +1,68 @@
+//creates a function called 'getTokens' which take one parameter called 'rawString'
+
+function getTokens(rawString) {
+
+  // NB: `.filter(Boolean)` removes any falsy items from an array
+  //returns the argument (rawString) with the following changes: all lower case, transformed into an array of strings with no special characters, falsy items are removed (in this case, empty strings), and the array is returned alphabetically sorted.
+  
+  return rawString.toLowerCase().split(/[ ,!.";:-]+/).filter(Boolean).sort();
+}
+  
+//The top part of this function is creating an object called 'wordFrequencies' the keys in the object are the words that show up in the text. The values of the keys are the number of times the words shows up in the text.
+
+function mostFrequentWord(text) {
+  //creates a variable called 'words'. 'words' is assigned the value of the text passed into the 'getTokens' function. This is an array of single words strings.
+  
+  const words = getTokens(text);
+  //creates an empty object called 'wordFrequencies'. This is where the key/value pairs will be stored.
+  
+  const wordFrequencies = {};
+  //creates a for loop that set the initializer at 0, and loops through by increments of 1.  This will loop throug the 'words' array until i is less than or equal to the length of the array. 
+  
+  for (let i = 0; i <= words.length; i++) {
+    //The 'if' conditional states that if the word in the current index position of the 'words' array is a key in the wordFrequencies object, then increment the value for that key by 1. The more times a words shows up the higher a value it gets.
+    
+    if (words[i] in wordFrequencies) {
+      wordFrequencies[words[i]]++;
+    }
+    //If the word isn't already in the 'wordFrequencies' object, and it as a key and set its value to 1.
+    
+    else {
+      wordFrequencies[words[i]]=1
+    }
+  }
+  
+  //We now have an object called 'wordFrequencies' where every key is a word from the text, and every word has a value that represents how many times it occurs in the text.
+  
+  //this creates a variable called 'currentMaxKey'. Object.keys transforms the 'wordFrequencies' object into an array of the keys and the string value at index location 0 is stored as the value for 'currentMaxKey'. 
+  
+  let currentMaxKey = Object.keys(wordFrequencies)[0];
+  
+  //This line creates a variable called 'currentMaxCount'. 'wordFrequencies[currentMaxKey]' returns the value of the key that is currently stored in 'currentMaxKey' and that value is stored in currentMaxCount. So we now have two variables. 'currentMaxKey' which stores the key, and currentMaxCount which stores the value of the key.
+  
+  let currentMaxCount = wordFrequencies[currentMaxKey];
+  
+//this sets up a loop. 'var word' creates an empty variable. The loop states that as long as the 'word' variable is found in the 'wordFrequencies' object, the code found in the braces will run.
+
+  for (var word in wordFrequencies) {
+  
+    //this conditional states that if the value part of the key/value pair returned by 'wordFrequencies[word]' is greater than the 'currentMaxCount' variable the code in the braces will run.
+    
+    if (wordFrequencies[word] > currentMaxCount) {
+    
+      //this sets the value of currentMaxKey to the 'word' 'sting value'
+      
+      currentMaxKey = word;
+      
+      //this sets the value of currentMaxCount to the value part of the key/value pair returned by 'wordFrequencies[word]'
+      currentMaxCount = wordFrequencies[word];
+      
+    }
+  } 
+  
+  //this returns the value of 'currentMaxKey', which should be the word that appears the most in the provided text.
+  
+    return currentMaxKey;
+}
+
+console.log(mostFrequentWord('Hello, I am a student. Hello. I I I I I.'));
